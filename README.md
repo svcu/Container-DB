@@ -6,6 +6,12 @@ Container DB allows you to have more controll over your data thanks to its Conta
 # Containers
 Containers are like boxes where Container-DB stores your data. You can have infinite boces inside a database. For example you can have three separate boxes of users with different names, one for animals, and ten for hotels.
 
+#Install
+
+```js
+npm i container-db
+```
+
 # Storing data
 
 
