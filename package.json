@@ -1,8 +1,8 @@
 {
-  "name": "SDB",
-  "version": "1.0.0",
+  "name": "container-db",
+  "version": "1.0.4",
   "description": "Database with embedded sockets for real-time communication",
-  "main" : "./client/client.js",
+  "main": "./client/client.js",
   "scripts": {
     "test": "node app.js"
   },
@@ -10,8 +10,24 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "node-aes": "^1.0.1",
     "socket.io": "^4.3.1",
     "socket.io-client": "^4.3.2"
-  }
-
+  },
+  "keywords": [
+    "cdb",
+    "container-db",
+    "container-DB",
+    "Container-DB",
+    "DB",
+    "Database",
+    "db",
+    "database",
+    "sockets",
+    "real-time db",
+    "real-time database",
+    "sockets-db",
+    "sockets-database",
+    "sockets database"
+  ]
 }
