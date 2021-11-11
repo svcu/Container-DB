@@ -6,20 +6,14 @@ Container DB allows you to have more controll over your data thanks to its Conta
 # Containers
 Containers are like boxes where Container-DB stores your data. You can have infinite boces inside a database. For example you can have three separate boxes of users with different names, one for animals, and ten for hotels.
 
-# Install
-
-```js
-npm i container-db
-```
-
 # Storing data
 
 
 
 ```js
-const CDB = require("container-db");
+const {Client} = require("container-db");
 
-const cdb = new CDB ("WHERE YOU WANT YOUR DATABASE TO BE HOSTED IT NEEDS TO END WITH AN SLASH (/)")
+const cdb = new Client ("WHERE YOU WANT YOUR DATABASE TO BE HOSTED IT NEEDS TO END WITH AN SLASH (/)")
 
 //1- create a container to store your data
 cbd.createContainer("NAME", "TYPE", "INITIAL DATA").then(res => console.log)
@@ -122,8 +116,20 @@ io.on("pushed", (data)=>{
 */
 ```
 
+# Container Manager
+Container Manager helps yout to manage an specific container in a most easy way.
+
+```js
+const {ContainerManager, Client} = require("container-db")
+const containerManager = new ContainerManager("CONTAINER", "CLIENT")
+
+//All the functions on the Container Managaer are the same that in the client but with the container name
+```
+
+# Contribute
+If you want to contribute go to https://github.com/svcu/Container-DB and make your contributions. Container DB is built by the community for the community.
+
 # Donations
 
 ETH : 0xB86BF6c0519e7167a1f446F666DcE72C501F9597
-
 
