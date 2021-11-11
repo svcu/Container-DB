@@ -548,10 +548,88 @@ class Client{
 
 
 
+}
+
+class ContainerManager{
+    constructor(container, client){
+        this.container = container;
+        this.client = client;
+    }
+
+   async addField(name, data){
+       const res = await this.client.addField(name, this.container, data);
+       return res
+    }
+
+    async  getField(field){
+        const res = await this.client.getField(this.container, field);
+        return res
+        
+    }
+
+    async   getContainer(){
+        const res = await this.client.getContainer(this.container);
+        return res
+    }
+
+    async   updateField(field, property, dataToUpdate){
+        const res = await this.client.updateField(this.container, field, property, dataToUpdate);
+        return res
+    }
+
+    async   deleteField(field){
+        const res =  await this.client.deleteField(this.container, field);
+        return res
+    }
+
+    async   findOne(property, value){
+        const res =  await this.client.findOne(this.container, property, value);
+        return res
+    }
+
+    async  findAll(property, value){
+        const res =  await this.client.findAll(this.container, property, value);
+        return res
+    }
+
+    async   findOneAndUpdate(property, value){
+        const res =  await this.client.findOneAndUpdate(this.container, property, value);
+        return res
+    }
+
+    async  findOneAndDelete(property, value){
+        const res =  await this.client.findOneAndDelete(this.container, property, value)
+        return res
+    }
+
+    async   findAllAndUpdate(property, value){
+        const res =  await this.client.findAllAndUpdate(this.container, property, value);
+        return res
+    }
+
+    async   findAllAndDelete(property, value){
+        const res =  await this.client.findAllAndDelete(this.container, property, value)
+        return res
+    }
+
+    async    push(field, arrayName, value){
+        const res =  await this.client.push(this.container, field, arrayName, value);
+        return res
+    }
+
+    async   pull(field, arrayName, value){
+        const res = await this.client.pull(this.container, field, arrayName, value);
+        return res
+    }
+
+   async pullAll(field, arrayName){
+        const res = await this.client.pullAll(this.container, field, arrayName);
+        return res
+    }
+
 
 }
 
 
 
-
-module.exports = Client;
+module.exports = {Client, ContainerManager};
