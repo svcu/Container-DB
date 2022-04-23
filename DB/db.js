@@ -10,6 +10,24 @@ class DB{
         this.encrytpion = encrytpion;
         this.password = password
 
+        setInterval(()=>{
+              
+                this.containers.forEach((container) => {
+                        
+                    let db = JSON.parse(fs.readFileSync(this.address+container+".json"));
+
+                    for(let i in db){
+                        if(db[i]["expiration"] >= db[i]["time"]){
+                            delete db[i];
+                            fs.writeFileSync(this.address+container+".json", db);
+                  }else {
+                      db[i][time]++;
+                  }
+              }
+                })
+
+        }, 1000000);
+
         if(!fs.existsSync(this.address)){
 
 
@@ -416,6 +434,8 @@ class DB{
         })
 
     }
+
+    
 }
 
 
