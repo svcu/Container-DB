@@ -26,7 +26,7 @@ class DB{
               }
                 })
 
-        }, 1000000);
+        }, 60000);
 
         if(!fs.existsSync(this.address)){
 
