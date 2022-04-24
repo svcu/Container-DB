@@ -19,7 +19,7 @@ class DB{
                     for(let i in db){
                         if(db[i]["expiration"] >= db[i]["time"]){
                             delete db[i];
-                            fs.writeFileSync(this.address+container+".json", db);
+                            fs.writeFileSync(this.address+container+".json", JSON.stringify(db));
                   }else {
                       db[i][time]++;
                   }
@@ -160,7 +160,7 @@ class DB{
                         //Update field
                         db[field][property] = dataToUpdate;
                         //Save changes to file
-                        fs.writeFileSync(this.address+container+".json", db);
+                        fs.writeFileSync(this.address+container+".json", JSON.stringify(db));
                         this.socket.sockets.emit("updatedField", {"container" : container, "field" : field, "data" : dataToUpdate, "property" : property})
                     }else{
                         this.socket.sockets.emit("updatedField", "Field does not exists")
@@ -184,7 +184,7 @@ class DB{
                         //Delete field
                         delete db[field];
                         //Save changes to file
-                        fs.writeFileSync(this.address+container+".json", db);
+                        fs.writeFileSync(this.address+container+".json", JSON.stringify(db));
                         this.socket.sockets.emit("deletedField", {"container" : container, "field" : field})
                     }else{
                         this.socket.sockets.emit("deletedField", "Field does not exists")
@@ -278,7 +278,7 @@ class DB{
                         if(db[i][field] == value){
                             result=db[i];
                             db[i][field] = dataToUpdate;
-                            fs.writeFileSync(this.address+container+".json", db);
+                            fs.writeFileSync(this.address+container+".json", JSON.stringify(db));
 
                             break;
                         }
@@ -306,7 +306,7 @@ class DB{
                         if(db[i][field] == value){
                             result=db[i];
                             delete db[i];
-                            fs.writeFileSync(this.address+container+".json", db);
+                            fs.writeFileSync(this.address+container+".json", JSON.stringify(db));
 
                             break;
                         }
@@ -335,7 +335,7 @@ class DB{
                         if(db[i][field] == value){
                             result.push(db[i]);
                             db[i][field] = dataToUpdate;
-                            fs.writeFileSync(this.address+container+".json", db);
+                            fs.writeFileSync(this.address+container+".json", JSON.stringify(db));
                         }
                     }
 
@@ -361,7 +361,7 @@ class DB{
                         if(db[i][field] == value){
                             result.push(db[i]);
                             delete db[i];
-                            fs.writeFileSync(this.address+container+".json", db);
+                            fs.writeFileSync(this.address+container+".json", JSON.stringify(db));
                         }
                     }
 
@@ -383,7 +383,7 @@ class DB{
                     let db = JSON.parse(fs.readFileSync(this.address+container+".json"));
 
                     db[field][arrayName].push(value);
-                    fs.writeFileSync(this.address+container+".json", db);
+                    fs.writeFileSync(this.address+container+".json", JSON.stringify(db));
 
                     this.socket.sockets.emit("pushed", {"field" : field, "value" : value, "array" : arrayName})
                 }
@@ -403,7 +403,7 @@ class DB{
                     let db = JSON.parse(fs.readFileSync(this.address+container+".json"));
 
                     db[field][arrayName].pull(value);
-                    fs.writeFileSync(this.address+container+".json", db);
+                    fs.writeFileSync(this.address+container+".json", JSON.stringify(db));
 
                     this.socket.sockets.emit("pulled", {"field" : field, "value" : value, "array" : arrayName})
                 }
@@ -422,7 +422,7 @@ class DB{
                     let db = JSON.parse(fs.readFileSync(this.address+container+".json"));
 
                     db[field][arrayName] = [];
-                    fs.writeFileSync(this.address+container+".json", db);
+                    fs.writeFileSync(this.address+container+".json", JSON.stringify(db));
 
                     this.socket.sockets.emit("pulledAll", {"field" : field, "array" : arrayName})
                 }
